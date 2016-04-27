@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <import resource="classpath:spring/spring_db_order_queue.xml"/>
+
+    <!-- order_queue sql session factory bean config -->
+    <bean id="sqlSessionFactory_order_queue" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource_order_queue_write" />
+        <property name="configLocation" value="classpath:com/young/demo/repository/mybatis/data/mybatis-config.xml" />
+    </bean>
+
+    <!-- use this for call mybatis CRUD directly  -->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory_order_queue" />
+    </bean>
+
+    <bean id="sqlBatchSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="sqlSessionFactory_order_queue" />
+        <constructor-arg index="1" value="BATCH" />
+    </bean>
+
+    <bean id="baseDao" abstract="true" class="com.young.demo.repository.mybatis.infrastructure.impl.BaseDaoImpl" >
+        <property name="sqlSessionTemplate">
+            <ref bean="sqlSession" />
+        </property>
+    </bean>
+
+</beans>

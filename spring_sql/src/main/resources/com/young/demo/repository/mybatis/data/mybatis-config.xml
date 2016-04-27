@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">  
+<configuration>
+    <!--
+    <typeAliases>  
+        <typeAlias alias="LeparInDatagram" type="com.letv.leparinterface.model.LeparInDatagram"/>
+        <typeAlias alias="LeparInOrdersQueneMapper" type="com.letv.leparinterface.model.LeparInOrdersQueneMapper"/>
+        <typeAlias alias="LeparInOrderDetail" type="com.letv.leparinterface.model.LeparInOrdersDetail"/>
+    </typeAliases>  
+    <plugins>
+        <plugin interceptor="com.letv.leparinterface.mybatis.DiclectStatementHandlerInterceptor"/>
+        <plugin interceptor="com.letv.leparinterface.mybatis.DiclectResultSetHandlerInterceptor"/>
+    </plugins>
+    -->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <mappers>
+
+             <mapper class="com.young.demo.repository.mybatis.data.LeparInOrdersQueneMapper" />
+        <!--
+                    <mapper resource="InPaymentDetailMapper.xml" />
+                    <mapper resource="DatagramMapper.xml" />
+                    <mapper resource="OrdersDetailMapper.xml" />
+                    -->
+    </mappers> 
+</configuration>

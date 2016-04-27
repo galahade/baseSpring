@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.young.demo.repository.mybatis.data.LeparInOrdersQueneMapper" >
+  <resultMap id="BaseResultMap" type="com.young.demo.repository.mybatis.model.LeparInOrdersQuene" >
+    <result column="out_order_id" property="outOrderId" javaType="java.lang.String" />
+    <result column="order_source" property="orderSource" javaType="java.lang.Integer" />
+    <result column="order_id" property="orderId" javaType="java.lang.String" />
+    <result column="status" property="status" javaType="java.lang.Integer" />
+    <result column="channel" property="channel" javaType="java.lang.String" />
+    <result column="order_type" property="orderType" javaType="java.lang.Integer" />
+    <result column="storage_id" property="storageId" javaType="java.lang.Integer" />
+    <result column="contract_type" property="contractType" javaType="java.lang.Integer" />
+    <result column="payment_amount" property="paymentAmount" javaType="java.math.BigDecimal" />
+    <result column="order_amount" property="orderAmount" javaType="java.math.BigDecimal" />
+    <result column="tax_amount" property="taxAmount" javaType="java.math.BigDecimal" />
+    <result column="fact_payment" property="factPayment" javaType="java.math.BigDecimal" />
+    <result column="country_id" property="countryId" javaType="java.lang.Integer" />
+    <result column="province_id" property="provinceId" javaType="java.lang.Integer" />
+    <result column="city_id" property="cityId" javaType="java.lang.Integer" />
+    <result column="district_id" property="districtId" javaType="java.lang.Integer" />
+    <result column="country_name" property="countryName" javaType="java.lang.String" />
+    <result column="province_name" property="provinceName" javaType="java.lang.String" />
+    <result column="city_name" property="cityName" javaType="java.lang.String" />
+    <result column="districe_name" property="districeName" javaType="java.lang.String" />
+    <result column="reciver_name" property="reciverName" javaType="java.lang.String" />
+    <result column="reciver_mobile" property="reciverMobile" javaType="java.lang.String" />
+    <result column="reciver_phone" property="reciverPhone" javaType="java.lang.String" />
+    <result column="reciver_email" property="reciverEmail" javaType="java.lang.String" />
+    <result column="reciver_zip" property="reciverZip" javaType="java.lang.String" />
+    <result column="reciver_address" property="reciverAddress" javaType="java.lang.String" />
+    <result column="is_invoice" property="isInvoice" javaType="java.lang.Integer" />
+    <result column="invoice_type" property="invoiceType" javaType="java.lang.Integer" />
+    <result column="invoice_title" property="invoiceTitle" javaType="java.lang.String" />
+    <result column="intvoice_content" property="intvoiceContent" javaType="java.lang.String" />
+    <result column="upload_time" property="uploadTime" javaType="java.util.Date" />
+    <result column="upload_fail_reason" property="uploadFailReason" javaType="java.lang.String" />
+    <result column="is_uploaded" property="isUploaded" javaType="java.lang.Integer" />
+    <result column="create_at" property="createAt" javaType="java.util.Date" />
+    <result column="update_at" property="updateAt" javaType="java.util.Date" />
+    <result column="valid_mobile" property="validMobile" javaType="java.lang.String" />
+    <result column="valid_name" property="validName" javaType="java.lang.String" />
+    <result column="branch_bank_code" property="branchBankCode" javaType="java.lang.String" />
+    <result column="execute_count" property="executeCount" javaType="java.lang.Integer" />
+    <result column="backup_one" property="backupOne" javaType="java.lang.String" />
+    <result column="backup_two" property="backupTwo" javaType="java.lang.String" />
+    <result column="ec_id" property="ecId" javaType="java.lang.Integer" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    out_order_id, order_source, order_id, status, channel, order_type, storage_id, contract_type, fail_reason,
+    payment_amount, order_amount, tax_amount, fact_payment, country_id, province_id, city_id, district_id, 
+    country_name, province_name, city_name, districe_name, reciver_name, reciver_mobile, 
+    reciver_phone, reciver_email, reciver_zip, reciver_address, is_invoice, invoice_type, 
+    invoice_title, intvoice_content, upload_time, upload_fail_reason, is_uploaded, create_at, 
+    update_at, valid_mobile, valid_name, branch_bank_code, execute_count, backup_one, 
+    backup_two, ec_id
+  </sql>
+
+  <select id="getByPrimaryKey" resultMap="BaseResultMap" parameterType="com.young.demo.repository.mybatis.model.LeparInOrdersQuene$LeparInOrdersQueneKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from lepar_in_orders_quene
+    where out_order_id = #{outOrderId}
+      and order_source = #{orderSource}
+  </select>
+  
+  <select id="selectCountByPrimaryKey" resultType="java.lang.Integer" parameterType="com.young.demo.repository.mybatis.model.LeparInOrdersQuene$LeparInOrdersQueneKey" >
+    select count(*) from lepar_in_orders_quene
+    where out_order_id = #{outOrderId}
+      and order_source = #{orderSource}
+  </select>
+
+  <insert id="save" parameterType="com.young.demo.repository.mybatis.model.LeparInOrdersQuene$LeparInOrdersQueneKey" >
+    insert into lepar_in_orders_quene (out_order_id, order_source, order_id, 
+      status, channel, order_type, storage_id, contract_type,
+      fail_reason, payment_amount, order_amount, tax_amount,
+      fact_payment, country_id, province_id, 
+      city_id, district_id, country_name, 
+      province_name, city_name, districe_name, 
+      reciver_name, reciver_mobile, reciver_phone, 
+      reciver_email, reciver_zip, reciver_address, 
+      is_invoice, invoice_type, invoice_title, 
+      intvoice_content, upload_time, upload_fail_reason, 
+      is_uploaded, create_at, update_at, 
+      valid_mobile, valid_name, branch_bank_code, 
+      execute_count, backup_one, backup_two, ec_id)
+    values (#{outOrderId}, #{orderSource}, #{orderId}, 
+      #{status}, #{channel}, #{orderType}, #{storageId}, 
+      #{contractType}, #{failReason}, #{paymentAmount}, #{orderAmount}, #{taxAmount},
+      #{factPayment}, #{countryId}, #{provinceId}, 
+      #{cityId}, #{districtId}, #{countryName}, 
+      #{provinceName}, #{cityName}, #{districeName}, 
+      #{reciverName}, #{reciverMobile}, #{reciverPhone}, 
+      #{reciverEmail}, #{reciverZip}, #{reciverAddress}, 
+      #{isInvoice}, #{invoiceType}, #{invoiceTitle}, 
+      #{intvoiceContent}, #{uploadTime}, #{uploadFailReason}, 
+      #{isUploaded}, NOW(), NOW(), 
+      #{validMobile}, #{validName}, #{branchBankCode}, 
+      #{executeCount}, #{backupOne}, #{backupTwo}, #{ecId})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.young.demo.repository.mybatis.model.LeparInOrdersQuene$LeparInOrdersQueneKey" >
+    update lepar_in_orders_quene
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType},
+      </if>
+      <if test="storageId != null" >
+        storage_id = #{storageId},
+      </if>
+      <if test="contractType != null" >
+        contract_type = #{contractType},
+      </if>
+      <if test="failReason != null" >
+        fail_reason = #{failReason},
+      </if>
+      <if test="paymentAmount != null" >
+        payment_amount = #{paymentAmount},
+      </if>
+      <if test="orderAmount != null" >
+        order_amount = #{orderAmount},
+      </if>
+      <if test="taxAmount != null" >
+        tax_amount = #{taxAmount},
+      </if>
+      <if test="factPayment != null" >
+        fact_payment = #{factPayment},
+      </if>
+      <if test="countryId != null" >
+        country_id = #{countryId},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId},
+      </if>
+      <if test="districtId != null" >
+        district_id = #{districtId},
+      </if>
+      <if test="countryName != null" >
+        country_name = #{countryName},
+      </if>
+      <if test="provinceName != null" >
+        province_name = #{provinceName},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName},
+      </if>
+      <if test="districeName != null" >
+        districe_name = #{districeName},
+      </if>
+      <if test="reciverName != null" >
+        reciver_name = #{reciverName},
+      </if>
+      <if test="reciverMobile != null" >
+        reciver_mobile = #{reciverMobile},
+      </if>
+      <if test="reciverPhone != null" >
+        reciver_phone = #{reciverPhone},
+      </if>
+      <if test="reciverEmail != null" >
+        reciver_email = #{reciverEmail},
+      </if>
+      <if test="reciverZip != null" >
+        reciver_zip = #{reciverZip},
+      </if>
+      <if test="reciverAddress != null" >
+        reciver_address = #{reciverAddress},
+      </if>
+      <if test="isInvoice != null" >
+        is_invoice = #{isInvoice},
+      </if>
+      <if test="invoiceType != null" >
+        invoice_type = #{invoiceType},
+      </if>
+      <if test="invoiceTitle != null" >
+        invoice_title = #{invoiceTitle},
+      </if>
+      <if test="intvoiceContent != null" >
+        intvoice_content = #{intvoiceContent},
+      </if>
+      <if test="uploadTime != null" >
+        upload_time = #{uploadTime},
+      </if>
+      <if test="uploadFailReason != null" >
+        upload_fail_reason = #{uploadFailReason},
+      </if>
+      <if test="validMobile != null" >
+        valid_mobile = #{validMobile},
+      </if>
+      <if test="validName != null" >
+        valid_name = #{validName},
+      </if>
+      <if test="branchBankCode != null" >
+        branch_bank_code = #{branchBankCode},
+      </if>
+      <if test="backupOne != null" >
+        backup_one = #{backupOne},
+      </if>
+      <if test="backupTwo != null" >
+        backup_two = #{backupTwo},
+      </if>
+      <if test="ecId != null" >
+        ec_id = #{ecId},
+      </if>
+      update_at = NOW()
+    </set>
+    where out_order_id = #{outOrderId}
+      and order_source = #{orderSource}
+  </update>
+
+</mapper>

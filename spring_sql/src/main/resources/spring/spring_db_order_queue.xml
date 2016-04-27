@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置数据源 -->
+    <!--
+       <bean name="dataSource_zx_purchase_main" class="com.alibaba.druid.pool.DruidDataSource"
+             init-method="init" destroy-method="close">
+           <property name="url" value="${datasource.url.zx_purchase_main.write}" />
+           <property name="username" value="${datasource.username.zx_purchase_main.write}" />
+           <property name="password" value="${datasource.password.zx_purchase_main.write}" />
+           <property name="maxWait" value="60000" />
+       </bean>
+-->
+    <bean id="dataSource_config_order_queue_write" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP"/>
+        <property name="connectionTestQuery" value="SELECT 1"/>
+        <property name="username" value="${datasource.order_queue.write.username}"/>
+        <property name="password" value="${datasource.order_queue.write.password}"/>
+        <property name="jdbcUrl" value="${datasource.order_queue.write.url}"/>
+    </bean>
+
+    <bean id="dataSource_config_order_queue_read" class="com.zaxxer.hikari.HikariConfig">
+        <property name="poolName" value="springHikariCP"/>
+        <property name="connectionTestQuery" value="SELECT 1"/>
+        <property name="username" value="${datasource.order_queue.read.username}"/>
+        <property name="password" value="${datasource.order_queue.read.password}"/>
+        <property name="jdbcUrl" value="${datasource.order_queue.read.url}"/>
+    </bean>
+
+    <bean id="dataSource_order_queue_write" class="com.zaxxer.hikari.HikariDataSource">
+        <constructor-arg ref="dataSource_config_order_queue_write"/>
+    </bean>
+
+    <bean id="dataSource_order_queue_read" class="com.zaxxer.hikari.HikariDataSource">
+        <constructor-arg ref="dataSource_config_order_queue_read"/>
+    </bean>
+
+    <!-- config transaction manager for data source dataSource_order_queue_write -->
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource_order_queue_write" />
+    </bean>
+
+
+</beans>
