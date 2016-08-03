@@ -4,7 +4,6 @@ import com.young.demo.repository.mybatis.infrastructure.MyBatisReadOnlyMapper;
 
 import java.io.Serializable;
 
-import static javafx.scene.input.KeyCode.K;
 
 /**
  * Created by young_mac on 16/4/27.
